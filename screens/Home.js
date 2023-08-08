@@ -1,15 +1,22 @@
 import React from "react";
-import { View, StyleSheet, Text, Button } from "react-native";
+import { View, StyleSheet, Text, Button, ImageBackground } from "react-native";
 
+const bgimg = require("D:/Project/React_Native/KLEIT/assets/kle.jpg")
 export default function({navigation}) {
     return(
-    <View style={styles.container}>
+    <ImageBackground source={bgimg} style={styles.container} resizeMode="cover">
     {/* <Text>Hello</Text> */}
+    {/* <Text style={{fontFamily:'Lightning Script'}}>Hello</Text> */}
     <View style={styles.btn}>
-    <Button style={{paddingBottom:2}} title="Academics" onPress={() => navigation.navigate('Academics')}/>
-    <Button style={{paddingBottom:2}} title="Admissions" onPress={() => navigation.navigate('Admissions')}/>
+      <Button  title="Payment" onPress={() => navigation.navigate('Payment')}/>
     </View>
+    <View style={styles.btn}>
+      <Button  title="Academics" onPress={() => navigation.navigate('Academics')}/>
     </View>
+    <View style={[styles.btn, {paddingBottom:'50%'}]}>
+      <Button title="Admissions" onPress={() => navigation.navigate('Admissions')}/>
+    </View>
+    </ImageBackground>
     );
 }
 
@@ -19,9 +26,10 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'flex-end',
+      
     },
     btn: {
-      position:"absolute",
-      paddingBottom:'2%'
+      paddingBottom:10,
+      width:100
     }
   });

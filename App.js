@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./screens/Home";
 import Academics from "./screens/Academics";
 import Admissions from "./screens/Admissions";
+import Payment from "./screens/Payment";
 
 const Stack = createNativeStackNavigator();
 
@@ -42,7 +43,18 @@ export default function App() {
           }}
           component={Admissions}
         />
-      </Stack.Navigator>
+        <Stack.Screen
+          name="Payment"
+          options={{
+            title: "Payment page",
+            headerStyle: {
+              backgroundColor: "#735029",
+            },
+            headerTintColor: "#D4D4D4"
+          }}
+          component={Payment}
+          />
+        </Stack.Navigator>
     </NavigationContainer>
   );
 }
