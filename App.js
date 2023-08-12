@@ -1,10 +1,18 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import * as SplashScreen from 'expo-splash-screen';
+
+SplashScreen.preventAutoHideAsync();
+setTimeout(SplashScreen.hideAsync, 5000);
+
 import Home from "./screens/Home";
 import Academics from "./screens/Academics";
 import Admissions from "./screens/Admissions";
-import Payment from "./screens/Payment";
+import { Alert, Image, Linking, TouchableOpacity } from "react-native";
+
+const kle = require("./assets/images/kleit_logo.png");
+// const kle = require("./assets/images/KLE-SOCIETY-LOGO.png");
 
 const Stack = createNativeStackNavigator();
 
@@ -18,8 +26,13 @@ export default function App() {
             title: "Home Screen",
             headerStyle: {
               backgroundColor: "#735029",
-            },
-            headerTintColor: "#D4D4D4"
+            },  
+            headerTintColor: "#D4D4D4",
+            headerRight: () => (
+              <TouchableOpacity onPress={() => Linking.openURL('https://kleit.ac.in/')}>
+              <Image source={kle} style={{width: 50, height: 50 }}/>
+              </TouchableOpacity>
+            )
           }}
           component={Home}
         />
@@ -43,17 +56,6 @@ export default function App() {
           }}
           component={Admissions}
         />
-        <Stack.Screen
-          name="Payment"
-          options={{
-            title: "Payment page",
-            headerStyle: {
-              backgroundColor: "#735029",
-            },
-            headerTintColor: "#D4D4D4"
-          }}
-          component={Payment}
-          />
         </Stack.Navigator>
     </NavigationContainer>
   );
