@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/kleit_logo.jpg",
+      "image": "./assets/images/kleit_logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
