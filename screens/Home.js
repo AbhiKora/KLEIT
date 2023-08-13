@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Linking, Button, ImageBackground } from "react-native";
 
-const bgimg = require("../assets/images/kle.png")
+const bgimg = require("../assets/images/bg.png")
 export default function({navigation}) {
     return(
       // <View style={styles.container}>
