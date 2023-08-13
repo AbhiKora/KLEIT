@@ -1,12 +1,13 @@
 import React from "react";
-import { View, StyleSheet, Text, Button, ImageBackground } from "react-native";
+import { View, StyleSheet, Linking, Button, ImageBackground } from "react-native";
 
 const bgimg = require("../assets/images/kle.png")
 export default function({navigation}) {
     return(
-      <View style={styles.container}>
+      // <View style={styles.container}>
+      <ImageBackground source={bgimg} style={styles.container} resizeMode="cover">
             <View style={styles.btn}>
-      <Button  title="Payment" onPress={() => navigation.navigate('Payment')}/>
+      <Button  title="Payment" onPress={() => Linking.openURL('https://www.onlinesbi.sbi/sbicollect/icollecthome.htm')}/>
     </View>
     <View style={styles.btn}>
       <Button  title="Academics" onPress={() => navigation.navigate('Academics')}/>
@@ -14,11 +15,8 @@ export default function({navigation}) {
     <View style={[styles.btn, {paddingBottom:'50%'}]}>
       <Button title="Admissions" onPress={() => navigation.navigate('Admissions')}/>
     </View>
-      </View>
-    // <ImageBackground source={bgimg} style={styles.container} resizeMode="cover">
-
-
-    // </ImageBackground>
+      {/* </View> */}
+    </ImageBackground>
     );
 }
 
@@ -32,6 +30,6 @@ const styles = StyleSheet.create({
     },
     btn: {
       paddingBottom:10,
-      width:100
+      width:110
     }
   });
