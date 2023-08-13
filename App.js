@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as SplashScreen from 'expo-splash-screen';
 
 SplashScreen.preventAutoHideAsync();
-setTimeout(SplashScreen.hideAsync, 5000);
+setTimeout(SplashScreen.hideAsync, 3000);
 
 import Home from "./screens/Home";
 import Academics from "./screens/Academics";
