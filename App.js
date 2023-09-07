@@ -20,6 +20,8 @@ import Home from "./screens/Home";
 import Academics from "./screens/Academics";
 import Admissions from "./screens/Admissions";
 import UG from "./screens/UG";
+import PaymentScreen from "./screens/payment-Screen";
+import PG from "./screens/PG";
 
 const kle = require("./assets/images/kleit_logo.png");
 
@@ -53,11 +55,30 @@ function Draw() {
               />
             </TouchableOpacity>
           ),
-          // headerRight:() =>(
-          //   <IconButton icon={Menu} size={50} iconColor="white" style={{margin:30}}/>
-          // )
         }}
       />
+      <Drawer.Screen
+      name="Payment Screen"
+      component={PaymentScreen}
+      onPress={() =>
+        Linking.openURL(
+          "https://www.onlinesbi.sbi/sbicollect/icollecthome.htm"
+        )
+      }
+      options={{
+        headerStyle: {
+          backgroundColor: "#735029",
+        },
+        headerTintColor: "#D4D4D4",
+      }}
+      />
+      {/* <Drawer.Screen
+      name="Academics"
+      component={Academics}
+      options={{
+        headerShown:false
+      }}
+      /> */}
     </Drawer.Navigator>
   );
 }
@@ -104,6 +125,17 @@ export default function App() {
               headerTintColor: "#D4D4D4",
             }}
             component={UG}
+          />
+          <Stack.Screen
+            name="PG"
+            options={{
+              title:"PG Courses Offered",
+              headerStyle: {
+                backgroundColor: "#735029",
+              },
+              headerTintColor: "#D4D4D4",
+            }}
+            component={PG}
           />
 
         </Stack.Navigator>

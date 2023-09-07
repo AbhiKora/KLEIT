@@ -50,14 +50,6 @@ export default function ({ navigation }) {
           </View>
         </ImageBackground>
       </TouchableOpacity>
-      {/* <Button
-          title="Payment"
-          onPress={() =>
-            Linking.openURL(
-              "https://www.onlinesbi.sbi/sbicollect/icollecthome.htm"
-            )
-          }
-        /> */}
       <View style={{ paddingBottom: "45%" }}>
         <TouchableOpacity
           onPress={() => navigation.navigate("Admissions")}
