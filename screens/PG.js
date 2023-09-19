@@ -10,7 +10,7 @@ function MCA() {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
-    //   onPress={() => navigation.navigate("")}
+      onPress={() => navigation.navigate("MCA")}
       style={{ marginBottom: 20 }}
     >
       <Card>
@@ -31,7 +31,7 @@ function MTech() {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
-    //   onPress={() => navigation.navigate("")}
+      onPress={() => navigation.navigate("MTech")}
       style={{ marginBottom: 20 }}
     >
       <Card>

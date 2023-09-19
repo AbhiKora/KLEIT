@@ -9,12 +9,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Image, Linking, TouchableOpacity } from "react-native";
-import { useFonts, Roboto_700Bold } from '@expo-google-fonts/roboto';
-
-import * as SplashScreen from "expo-splash-screen";
-
-SplashScreen.preventAutoHideAsync();
-setTimeout(SplashScreen.hideAsync, 3000);
+import { useFonts, Roboto_700Bold } from "@expo-google-fonts/roboto";
 
 import Home from "./screens/Home";
 import Academics from "./screens/Academics";
@@ -22,6 +17,15 @@ import Admissions from "./screens/Admissions";
 import UG from "./screens/UG";
 import PaymentScreen from "./screens/payment-Screen";
 import PG from "./screens/PG";
+
+import ME from "./UG courses/ME";
+import CSE from "./UG courses/CSE";
+import EEE from "./UG courses/EEE";
+import CE from "./UG courses/CE";
+import ECE from "./UG courses/ECE";
+
+import MCA from "./PG courses/MCA";
+import MTech from "./PG courses/MTech";
 
 const kle = require("./assets/images/kleit_logo.png");
 
@@ -42,7 +46,7 @@ function Draw() {
         name="Home"
         component={Home}
         options={{
-          headerTitle:"",
+          headerTitle: "",
           headerTransparent: true,
           headerTintColor: "#D4D4D4",
           headerRight: () => (
@@ -58,30 +62,40 @@ function Draw() {
         }}
       />
       <Drawer.Screen
-      name="Payment Screen"
-      component={PaymentScreen}
-      onPress={() =>
-        Linking.openURL(
-          "https://www.onlinesbi.sbi/sbicollect/icollecthome.htm"
-        )
-      }
-      options={{
-        headerStyle: {
-          backgroundColor: "#735029",
-        },
-        headerTintColor: "#D4D4D4",
-      }}
+        name="Payment Screen"
+        component={PaymentScreen}
+        onPress={() =>
+          Linking.openURL(
+            "https://www.onlinesbi.sbi/sbicollect/icollecthome.htm"
+          )
+        }
+        options={{
+          title: "KLEIT Payment",
+          headerStyle: {
+            backgroundColor: "#735029",
+          },
+          headerTintColor: "#D4D4D4",
+        }}
       />
-      {/* <Drawer.Screen
-      name="Academics"
-      component={Academics}
-      options={{
-        headerShown:false
-      }}
-      /> */}
     </Drawer.Navigator>
   );
 }
+
+// function UGStack(){
+//   <Stack.Navigator initialRouteName="UG">
+//     <Stack.Screen
+//     name="UG"
+//     component={UG}
+//     options={{
+//       headerStyle: {
+//         backgroundColor: "#735029",
+//       },
+//       headerTintColor: "#D4D4D4",
+//     }}
+//     />
+
+//   </Stack.Navigator>
+// }
 
 export default function App() {
   return (
@@ -116,9 +130,20 @@ export default function App() {
             component={Admissions}
           />
           <Stack.Screen
+            name="PaymentScreen"
+            options={{
+              title:"KLEIT Payment",
+              headerStyle: {
+                backgroundColor: "#735029",
+              },
+              headerTintColor: "#D4D4D4",
+            }}
+            component={PaymentScreen}
+          />
+          <Stack.Screen
             name="UG"
             options={{
-              title:"UG Courses Offered",
+              title: "UG Courses Offered",
               headerStyle: {
                 backgroundColor: "#735029",
               },
@@ -129,7 +154,7 @@ export default function App() {
           <Stack.Screen
             name="PG"
             options={{
-              title:"PG Courses Offered",
+              title: "PG Courses Offered",
               headerStyle: {
                 backgroundColor: "#735029",
               },
@@ -137,7 +162,62 @@ export default function App() {
             }}
             component={PG}
           />
-
+          <Stack.Screen
+            name="ECE"
+            component={ECE}
+            options={{
+              headerShown:false,
+              headerTintColor: "#D4D4D4",
+            }}
+          />
+          <Stack.Screen
+            name="ME"
+            component={ME}
+            options={{
+              headerShown:false,
+              headerTintColor: "#D4D4D4",
+            }}
+          />
+          <Stack.Screen
+            name="CSE"
+            component={CSE}
+            options={{
+              headerShown:false,
+              headerTintColor: "#D4D4D4",
+            }}
+          />
+          <Stack.Screen
+            name="EEE"
+            component={EEE}
+            options={{
+              headerShown:false,
+              headerTintColor: "#D4D4D4",
+            }}
+          />
+          <Stack.Screen
+            name="CE"
+            component={CE}
+            options={{
+              headerShown:false,
+              headerTintColor: "#D4D4D4",
+            }}
+          />
+          <Stack.Screen
+            name="MCA"
+            component={MCA}
+            options={{
+              headerShown:false,
+              headerTintColor: "#D4D4D4",
+            }}
+          />
+          <Stack.Screen
+            name="MTech"
+            component={MTech}
+            options={{
+              headerShown:false,
+              headerTintColor: "#D4D4D4",
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>
