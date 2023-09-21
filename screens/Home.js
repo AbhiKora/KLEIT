@@ -12,7 +12,7 @@ import {
 } from "react-native";
 
 const bgimg = require("../assets/images/bgimg.png");
-const btn1 = require("../assets/images/btn2.png");
+const btn1 = require("../assets/images/btn21.png");
 const btn2 = require("../assets/images/btn1.png");
 const btn3 = require("../assets/images/btn.png");
 
