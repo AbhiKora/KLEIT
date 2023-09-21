@@ -1,58 +1,103 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { Button, TextInput } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
+import React from "react";
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
+const bgimg = require("../assets/images/KLELOGO.png");
+const btn = require("../assets/images/btnbg.png");
 
 export default function Admissions() {
-  const [Name, onChangeName] = React.useState("");
-  const [Email, onChangeEmail] = React.useState("");
-  const [Number, onChangeNumber] = React.useState("");
-  const [Address, onChangeAddress] = React.useState("");
+  const navigation = useNavigation();
   return (
-    <View style={styles.container}>
-        <TextInput
-        label="Name"
-        value={Name}
-        onChangeText={(text) => onChangeName(text)}
-        mode="outlined"
-        style={styles.TextBox}
-      />
-        <TextInput
-        label="Email"
-        value={Email}
-        onChangeText={(text) => onChangeEmail(text)}
-        mode="outlined"
-        style={styles.TextBox}
-      />
-        <TextInput
-        label="Number"
-        value={Number}
-        onChangeText={(text) => onChangeNumber(text)}
-        mode="outlined"
-        style={styles.TextBox}
-      />
-        <TextInput
-        label="Address"
-        value={Address}
-        onChangeText={(text) => onChangeAddress(text)}
-        mode="outlined"
-        style={styles.TextBox}
-        theme={{ colors: { primary: "#ff0000", } }}
-      />
-    </View>
-  )
+    <ImageBackground
+      source={bgimg}
+      style={styles.container}
+      resizeMode="contain"
+    >
+      <TouchableOpacity
+        onPress={() => navigation.navigate("FeePayment")}
+        style={styles.btn}
+      >
+        <ImageBackground
+          source={btn}
+          style={{ opacity: 1, height: 50 }}
+          resizeMode="cover"
+        >
+          <View style={{ alignItems: "center" }}>
+            <Text
+              style={{
+                color: "black",
+                fontSize: 20,
+                padding: 10,
+                textShadowColor: "gray",
+                textShadowOffset: { width: 1.5, height: 1.5 },
+                textShadowRadius: 5,
+              }}
+            >
+              Fee Structure
+            </Text>
+          </View>
+        </ImageBackground>
+      </TouchableOpacity>
+      <View style={{ paddingBottom: "38%" }}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("PaymentScreen")}
+          style={styles.btn}
+        >
+          <ImageBackground
+            source={btn}
+            style={{ opacity: 1, height: 50 }}
+            resizeMode="cover"
+          >
+            <View style={{ alignItems: "center" }}>
+              <Text
+                style={{
+                  color: "black",
+                  fontSize: 20,
+                  padding: 10,
+                  textShadowColor: "gray",
+                  textShadowOffset: { width: 1.5, height: 1.5 },
+                  textShadowRadius: 5,
+                }}
+              >
+                Online Payment
+              </Text>
+            </View>
+          </ImageBackground>
+        </TouchableOpacity>
+      </View>
+    </ImageBackground>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-end",
+    backgroundColor:""
   },
-  TextBox: {
-    marginTop: 5,
-    marginBottom: 30,
-    marginHorizontal: 20,
-    backgroundColor:"white",
-    color:"black"
+  textbox: {
+    marginLeft: 16,
+    paddingBottom: 200,
+  },
+  text: {
+    color: "white",
+    textShadowColor: "black",
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 5,
+    fontSize: 30,
+    fontFamily: "Roboto_700Bold",
+  },
+  btn: {
+    borderWidth: 2.3,
+    borderColor: "black",
+    marginHorizontal: 16,
+    marginBottom: 25,
+    borderRadius: 6,
   },
 });

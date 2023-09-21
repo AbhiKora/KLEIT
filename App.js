@@ -1,12 +1,11 @@
 import "react-native-gesture-handler";
-import React, {useEffect} from "react";
-import {
-  Provider as PaperProvider,
-} from "react-native-paper";
+import React from "react";
+import { Image, Linking, TouchableOpacity } from "react-native";
+import { Provider as PaperProvider } from "react-native-paper";
 
-import * as SplashScreen from 'expo-splash-screen';
+import * as SplashScreen from "expo-splash-screen";
 
-import { NavigationContainer} from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts, Roboto_700Bold } from "@expo-google-fonts/roboto";
 
@@ -17,9 +16,11 @@ import PaymentScreen from "./screens/payment-Screen";
 import UGStackNavigator from "./NavigationContainers/UGStack";
 import PGStackNavigator from "./NavigationContainers/PGStack";
 import DrawerStackNavigator from "./NavigationContainers/Drawer";
+import FeePayment from "./screens/FeePayment";
 
 const Stack = createNativeStackNavigator();
 
+const kle = require("./assets/images/KLELOGO.png");
 
 SplashScreen.preventAutoHideAsync();
 setTimeout(SplashScreen.hideAsync, 2000);
@@ -54,7 +55,22 @@ export default function App() {
           <Stack.Screen
             name="Academics"
             options={{
-             ...commonOptions,
+              ...commonOptions,
+              headerRight: () => (
+                <TouchableOpacity
+                  onPress={() => Linking.openURL("https://kleit.ac.in/")}
+                >
+                  <Image
+                    source={kle}
+                    style={{
+                      width: 50,
+                      height: 50,
+                      marginRight: 8,
+                      marginTop: 4,
+                    }}
+                  />
+                </TouchableOpacity>
+              ),
             }}
             component={Academics}
           />
@@ -62,14 +78,44 @@ export default function App() {
             name="Admissions"
             options={{
               ...commonOptions,
+              headerRight: () => (
+                <TouchableOpacity
+                  onPress={() => Linking.openURL("https://kleit.ac.in/")}
+                >
+                  <Image
+                    source={kle}
+                    style={{
+                      width: 50,
+                      height: 50,
+                      marginRight: 8,
+                      marginTop: 4,
+                    }}
+                  />
+                </TouchableOpacity>
+              ),
             }}
             component={Admissions}
           />
           <Stack.Screen
             name="PaymentScreen"
             options={{
-              title:"KLEIT Payment",
-              ...commonOptions
+              title: "KLEIT Payment",
+              ...commonOptions,
+              headerRight: () => (
+                <TouchableOpacity
+                  onPress={() => Linking.openURL("https://kleit.ac.in/")}
+                >
+                  <Image
+                    source={kle}
+                    style={{
+                      width: 50,
+                      height: 50,
+                      marginRight: 8,
+                      marginTop: 4,
+                    }}
+                  />
+                </TouchableOpacity>
+              ),
             }}
             component={PaymentScreen}
           />
@@ -77,7 +123,22 @@ export default function App() {
             name="UGStack"
             options={{
               title: "UG Courses Offered",
-              ...commonOptions
+              ...commonOptions,
+              headerRight: () => (
+                <TouchableOpacity
+                  onPress={() => Linking.openURL("https://kleit.ac.in/")}
+                >
+                  <Image
+                    source={kle}
+                    style={{
+                      width: 50,
+                      height: 50,
+                      marginRight: 8,
+                      marginTop: 4,
+                    }}
+                  />
+                </TouchableOpacity>
+              ),
             }}
             component={UGStackNavigator}
           />
@@ -85,9 +146,47 @@ export default function App() {
             name="PGStack"
             options={{
               title: "PG Courses Offered",
-              ...commonOptions
+              ...commonOptions,
+              headerRight: () => (
+                <TouchableOpacity
+                  onPress={() => Linking.openURL("https://kleit.ac.in/")}
+                >
+                  <Image
+                    source={kle}
+                    style={{
+                      width: 50,
+                      height: 50,
+                      marginRight: 8,
+                      marginTop: 4,
+                    }}
+                  />
+                </TouchableOpacity>
+              ),
             }}
             component={PGStackNavigator}
+          />
+          <Stack.Screen
+            name="FeePayment"
+            options={{
+              title: "Fee Structure",
+              ...commonOptions,
+              headerRight: () => (
+                <TouchableOpacity
+                  onPress={() => Linking.openURL("https://kleit.ac.in/")}
+                >
+                  <Image
+                    source={kle}
+                    style={{
+                      width: 50,
+                      height: 50,
+                      marginRight: 8,
+                      marginTop: 4,
+                    }}
+                  />
+                </TouchableOpacity>
+              ),
+            }}
+            component={FeePayment}
           />
         </Stack.Navigator>
       </NavigationContainer>

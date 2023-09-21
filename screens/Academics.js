@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Card } from "react-native-paper";
 
 const UGimg = require("../assets/images/UG.png");
@@ -10,7 +10,7 @@ function UG() {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
-    onPress={() => navigation.navigate("UGStack")}
+      onPress={() => navigation.navigate("UGStack")}
       style={{ marginBottom: 20 }}
     >
       <Card>
@@ -50,14 +50,12 @@ function PG() {
   );
 }
 
-const bgimg = require("../assets/images/KLELOGO.png")
-
 function MCA() {
   return (
-<ImageBackground source={bgimg} style={styles.container} resizeMode="cover">
+    <View>
       <UG />
       <PG />
-</ImageBackground>
+    </View>
   );
 }
 

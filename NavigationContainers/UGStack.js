@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import UG from "../screens/UG";
@@ -22,49 +22,48 @@ const commonOptions = {
 export default function UGStackNavigator() {
   return (
     <UGStack.Navigator initialRouteName="UG">
-    <UGStack.Screen
-    name="UG"
-    component={UG}
-    options={{
-      headerShown:false
-    }}
-    />
-    <UGStack.Screen
-            name="ECE"
-            component={ECE}
-            options={{
-              headerShown:false,
-            }}
-          />
-          <UGStack.Screen
-            name="ME"
-            component={ME}
-            options={{
-              headerShown:false,
-            }}
-          />
-          <UGStack.Screen
-            name="CSE"
-            component={CSE}
-            options={{
-              headerShown:false,
-            }}
-          />
-          <UGStack.Screen
-            name="EEE"
-            component={EEE}
-            options={{
-              headerShown:false,
-            }}
-          />
-          <UGStack.Screen
-            name="CE"
-            component={CE}
-            options={{
-              headerShown:false,
-            }}
-          />
-
-  </UGStack.Navigator>
-  )
+      <UGStack.Screen
+        name="UG"
+        component={UG}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <UGStack.Screen
+        name="ECE"
+        component={ECE}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <UGStack.Screen
+        name="ME"
+        component={ME}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <UGStack.Screen
+        name="CSE"
+        component={CSE}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <UGStack.Screen
+        name="EEE"
+        component={EEE}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <UGStack.Screen
+        name="CE"
+        component={CE}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </UGStack.Navigator>
+  );
 }
