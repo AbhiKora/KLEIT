@@ -18,7 +18,7 @@ function MCA() {
         <Card.Content>
           <Text
             variant="titleLarge"
-            style={{ color: "white", fontSize: 20, paddingTop: 8 }}
+            style={{ fontSize: 20, paddingTop: 8 }}
           >
             MCA
           </Text>
@@ -39,7 +39,7 @@ function MTech() {
         <Card.Content>
           <Text
             variant="titleLarge"
-            style={{ color: "white", fontSize: 20, paddingTop: 8 }}
+            style={{ fontSize: 20, paddingTop: 8 }}
           >
             MTech
           </Text>

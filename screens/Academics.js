@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import { Card } from "react-native-paper";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
+import { Card, Text } from "react-native-paper";
 
 const UGimg = require("../assets/images/UG.png");
 const PGimg = require("../assets/images/PG.png");
@@ -18,7 +18,7 @@ function UG() {
         <Card.Content>
           <Text
             variant="titleLarge"
-            style={{ color: "white", fontSize: 20, paddingTop: 8 }}
+            style={{ fontSize: 20, paddingTop: 8 }}
           >
             Under Graduate
           </Text>
@@ -40,7 +40,7 @@ function PG() {
         <Card.Content>
           <Text
             variant="titleLarge"
-            style={{ color: "white", fontSize: 20, paddingTop: 8 }}
+            style={{ fontSize: 20, paddingTop: 8 }}
           >
             Post Graduate
           </Text>

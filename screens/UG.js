@@ -21,7 +21,7 @@ function ECE() {
         <Card.Content>
           <Text
             variant="titleLarge"
-            style={{ color: "white", fontSize: 20, paddingTop: 8 }}
+            style={{ fontSize: 20, paddingTop: 8 }}
           >
             E & C Engineering
           </Text>
@@ -43,7 +43,7 @@ function Mech() {
         <Card.Content>
           <Text
             variant="titleLarge"
-            style={{ color: "white", fontSize: 20, paddingTop: 8 }}
+            style={{ fontSize: 20, paddingTop: 8 }}
           >
             Mechanical Engineering
           </Text>
@@ -65,7 +65,7 @@ function CSE() {
         <Card.Content>
           <Text
             variant="titleLarge"
-            style={{ color: "white", fontSize: 20, paddingTop: 8 }}
+            style={{ fontSize: 20, paddingTop: 8 }}
           >
             CS Engineering
           </Text>
@@ -87,7 +87,7 @@ function EEE() {
         <Card.Content>
           <Text
             variant="titleLarge"
-            style={{ color: "white", fontSize: 20, paddingTop: 8 }}
+            style={{ fontSize: 20, paddingTop: 8 }}
           >
             E & E Engineering
           </Text>
@@ -109,7 +109,7 @@ function Civil() {
         <Card.Content>
           <Text
             variant="titleLarge"
-            style={{ color: "white", fontSize: 20, paddingTop: 8 }}
+            style={{ fontSize: 20, paddingTop: 8 }}
           >
             Civil Engineering
           </Text>

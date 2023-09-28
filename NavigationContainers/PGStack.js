@@ -8,14 +8,6 @@ import MTech from "../PG courses/MTech";
 
 const PGStack = createNativeStackNavigator();
 
-const commonOptions = {
-  headerStyle: {
-    backgroundColor: "#735029",
-  },
-  headerTintColor: "#D4D4D4",
-  statusBarColor: "black",
-};
-
 export default function PGStackNavigator() {
   return (
     <PGStack.Navigator>

@@ -11,14 +11,6 @@ import ECE from "../UG courses/ECE";
 
 const UGStack = createNativeStackNavigator();
 
-const commonOptions = {
-  headerStyle: {
-    backgroundColor: "#735029",
-  },
-  headerTintColor: "#D4D4D4",
-  statusBarColor: "black",
-};
-
 export default function UGStackNavigator() {
   return (
     <UGStack.Navigator initialRouteName="UG">

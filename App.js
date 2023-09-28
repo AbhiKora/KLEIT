@@ -7,7 +7,11 @@ import * as SplashScreen from "expo-splash-screen";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useFonts, Roboto_700Bold } from "@expo-google-fonts/roboto";
+import {
+  useFonts,
+  Roboto_700Bold,
+  Roboto_500Medium,
+} from "@expo-google-fonts/roboto";
 
 import Academics from "./screens/Academics";
 import Admissions from "./screens/Admissions";
@@ -20,7 +24,7 @@ import FeePayment from "./screens/FeePayment";
 
 const Stack = createNativeStackNavigator();
 
-const kle = require("./assets/images/KLELOGO.png");
+const kle = require("./assets/images/kleit_logo.png");
 
 SplashScreen.preventAutoHideAsync();
 setTimeout(SplashScreen.hideAsync, 2000);
@@ -30,12 +34,13 @@ const commonOptions = {
     backgroundColor: "#735029",
   },
   headerTintColor: "#D4D4D4",
-  statusBarColor: "black",
+  statusBarTranslucent: true,
 };
 
 export default function App() {
   let [fontsLoaded, fontError] = useFonts({
     Roboto_700Bold,
+    Roboto_500Medium,
   });
 
   if (!fontsLoaded && !fontError) {
@@ -49,6 +54,7 @@ export default function App() {
             name="Drawer"
             options={{
               headerShown: false,
+              statusBarTranslucent: true,
             }}
             component={DrawerStackNavigator}
           />
@@ -65,8 +71,7 @@ export default function App() {
                     style={{
                       width: 50,
                       height: 50,
-                      marginRight: 8,
-                      marginTop: 4,
+                      marginBottom: 4,
                     }}
                   />
                 </TouchableOpacity>
@@ -87,8 +92,7 @@ export default function App() {
                     style={{
                       width: 50,
                       height: 50,
-                      marginRight: 8,
-                      marginTop: 4,
+                      marginBottom: 4,
                     }}
                   />
                 </TouchableOpacity>
@@ -110,8 +114,7 @@ export default function App() {
                     style={{
                       width: 50,
                       height: 50,
-                      marginRight: 8,
-                      marginTop: 4,
+                      marginBottom: 4,
                     }}
                   />
                 </TouchableOpacity>
@@ -133,8 +136,7 @@ export default function App() {
                     style={{
                       width: 50,
                       height: 50,
-                      marginRight: 8,
-                      marginTop: 4,
+                      marginBottom: 4,
                     }}
                   />
                 </TouchableOpacity>
@@ -156,8 +158,7 @@ export default function App() {
                     style={{
                       width: 50,
                       height: 50,
-                      marginRight: 8,
-                      marginTop: 4,
+                      marginBottom: 4,
                     }}
                   />
                 </TouchableOpacity>
@@ -179,8 +180,7 @@ export default function App() {
                     style={{
                       width: 50,
                       height: 50,
-                      marginRight: 8,
-                      marginTop: 4,
+                      marginBottom: 4,
                     }}
                   />
                 </TouchableOpacity>

@@ -3,12 +3,10 @@ import React from "react";
 import {
   View,
   StyleSheet,
-  Linking,
-  Button,
   ImageBackground,
   Text,
   TouchableOpacity,
-  Image,
+  StatusBar,
 } from "react-native";
 
 const bgimg = require("../assets/images/bgimg.png");
@@ -19,6 +17,9 @@ const btn3 = require("../assets/images/btn.png");
 export default function ({ navigation }) {
   return (
     <ImageBackground source={bgimg} style={styles.container} resizeMode="cover">
+      <StatusBar
+      backgroundColor="#000000"
+      />
       <View style={styles.textbox}>
         <Text style={styles.text}>"Empower</Text>
         <Text style={styles.text}>Your Future at</Text>
