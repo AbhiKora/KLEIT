@@ -30,6 +30,7 @@ export default function DrawerStackNavigator() {
           headerTintColor: "#D4D4D4",
           drawerActiveTintColor: "#fff",
           drawerActiveBackgroundColor: "#735029",
+          drawerHideStatusBarOnOpen:true,
           headerRight: () => (
             <TouchableOpacity
               onPress={() => Linking.openURL("https://kleit.ac.in/")}

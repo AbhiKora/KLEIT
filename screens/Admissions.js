@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import {
   ImageBackground,
+  Image,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -14,20 +15,20 @@ const btn = require("../assets/images/btnbg.png");
 export default function Admissions() {
   const navigation = useNavigation();
   return (
-    <ImageBackground
-      source={bgimg}
-      style={styles.container}
-      resizeMode="contain"
-    >
+    <View style={styles.container}>
+    <Image
+    source={bgimg}
+    style={{height: 350, width: 350, alignSelf:"center", marginBottom:50}}
+    />
       <TouchableOpacity
         onPress={() => navigation.navigate("FeePayment")}
         style={styles.btn}
-      >
+        >
         <ImageBackground
           source={btn}
           style={{ opacity: 1, height: 50 }}
           resizeMode="cover"
-        >
+          >
           <View style={{ alignItems: "center" }}>
             <Text
               style={{
@@ -38,7 +39,7 @@ export default function Admissions() {
                 textShadowOffset: { width: 1.5, height: 1.5 },
                 textShadowRadius: 5,
               }}
-            >
+              >
               Fee Structure
             </Text>
           </View>
@@ -48,12 +49,12 @@ export default function Admissions() {
         <TouchableOpacity
           onPress={() => navigation.navigate("PaymentScreen")}
           style={styles.btn}
-        >
+          >
           <ImageBackground
             source={btn}
             style={{ opacity: 1, height: 50 }}
             resizeMode="cover"
-          >
+            >
             <View style={{ alignItems: "center" }}>
               <Text
                 style={{
@@ -64,14 +65,14 @@ export default function Admissions() {
                   textShadowOffset: { width: 1.5, height: 1.5 },
                   textShadowRadius: 5,
                 }}
-              >
+                >
                 Online Payment
               </Text>
             </View>
           </ImageBackground>
         </TouchableOpacity>
       </View>
-    </ImageBackground>
+                </View>
   );
 }
 

@@ -34,7 +34,7 @@ const commonOptions = {
     backgroundColor: "#735029",
   },
   headerTintColor: "#D4D4D4",
-  statusBarTranslucent: true,
+  statusBarColor:"#735029"
 };
 
 export default function App() {
@@ -54,7 +54,7 @@ export default function App() {
             name="Drawer"
             options={{
               headerShown: false,
-              statusBarTranslucent: true,
+              statusBarColor:'#735029',
             }}
             component={DrawerStackNavigator}
           />
@@ -83,6 +83,7 @@ export default function App() {
             name="Admissions"
             options={{
               ...commonOptions,
+              statusBarColor:'#735029',
               headerRight: () => (
                 <TouchableOpacity
                   onPress={() => Linking.openURL("https://kleit.ac.in/")}
