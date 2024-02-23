@@ -5,6 +5,7 @@ export default function CSE() {
   return (
     <WebView
       source={{ uri: "https://kleit.ac.in/computer-science-engineering/" }}
+      useWebView2={true}
       startInLoadingState={true}
       injectedJavaScript={`document.getElementsByClassName('toolbar-container')[0].style.display = 'none';
       document.getElementsByClassName('thim-nav-wrapper container')[0].style.display = 'none';

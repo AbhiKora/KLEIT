@@ -1,17 +1,16 @@
 import React from "react";
-import { Image, Linking, TouchableOpacity } from "react-native";
 import { commonOptions } from "../GlobalStyle";
 
-import CustomDrawer from "../CustomDrawer";
+import CustomDrawer from "../components/CustomDrawer";
 import Home from "../screens/Home";
 import AboutUs from "../screens/About";
 import ContactUs from "../screens/ContactUs";
 import PaymentScreen from "../screens/payment-Screen";
 
-const kle = require("../assets/images/kleit_logo.png");
-
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import Login from "../screens/Login";
+import HeaderRight from "../components/headerRight";
 
 const Drawer = createDrawerNavigator();
 
@@ -31,16 +30,7 @@ export default function DrawerStackNavigator() {
           drawerActiveTintColor: "#fff",
           drawerActiveBackgroundColor: "#735029",
           drawerHideStatusBarOnOpen:true,
-          headerRight: () => (
-            <TouchableOpacity
-              onPress={() => Linking.openURL("https://kleit.ac.in/")}
-            >
-              <Image
-                source={kle}
-                style={{ width: 50, height: 50, marginRight: 12, marginTop: 8 }}
-              />
-            </TouchableOpacity>
-          ),
+          headerRight: () => <HeaderRight/>,
           drawerIcon: ({ color }) => (
             <Ionicons name="home-outline" size={24} color={color} />
           ),
@@ -54,21 +44,7 @@ export default function DrawerStackNavigator() {
           ...commonOptions,
           drawerActiveTintColor: "#fff",
           drawerActiveBackgroundColor: "#735029",
-          headerRight: () => (
-            <TouchableOpacity
-              onPress={() => Linking.openURL("https://kleit.ac.in/")}
-            >
-              <Image
-                source={kle}
-                style={{
-                  width: 50,
-                  height: 50,
-                  marginRight: 4,
-                  marginBottom: 4,
-                }}
-              />
-            </TouchableOpacity>
-          ),
+          headerRight: () => <HeaderRight/>,
           drawerIcon: ({ color }) => (
             <Ionicons name="information-circle-outline" size={24} color={color} />
           ),
@@ -82,23 +58,23 @@ export default function DrawerStackNavigator() {
           ...commonOptions,
           drawerActiveTintColor: "#fff",
           drawerActiveBackgroundColor: "#735029",
-          headerRight: () => (
-            <TouchableOpacity
-              onPress={() => Linking.openURL("https://kleit.ac.in/")}
-            >
-              <Image
-                source={kle}
-                style={{
-                  width: 50,
-                  height: 50,
-                  marginRight: 4,
-                  marginBottom: 4,
-                }}
-              />
-            </TouchableOpacity>
-          ),
+          headerRight: () => <HeaderRight/>,
           drawerIcon: ({ color }) => (
             <Ionicons name="call-outline" size={24} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Login"
+        component={Login}
+        options={{
+          title: "Login",
+          ...commonOptions,
+          drawerActiveTintColor: "#fff",
+          drawerActiveBackgroundColor: "#735029",
+          headerRight: () => <HeaderRight/>,
+          drawerIcon: ({ color }) => (
+            <Ionicons name="person-outline" size={24} color={color} />
           ),
         }}
       />
@@ -110,21 +86,7 @@ export default function DrawerStackNavigator() {
           ...commonOptions,
           drawerActiveTintColor: "#fff",
           drawerActiveBackgroundColor: "#735029",
-          headerRight: () => (
-            <TouchableOpacity
-              onPress={() => Linking.openURL("https://kleit.ac.in/")}
-            >
-              <Image
-                source={kle}
-                style={{
-                  width: 50,
-                  height: 50,
-                  marginRight: 4,
-                  marginBottom: 4,
-                }}
-              />
-            </TouchableOpacity>
-          ),
+          headerRight: () => <HeaderRight/>,
           drawerIcon: ({ color }) => (
             <Ionicons name="school-outline" size={24} color={color} />
           ),

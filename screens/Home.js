@@ -1,4 +1,3 @@
-import { Roboto_700Bold } from "@expo-google-fonts/roboto";
 import React from "react";
 import {
   View,

@@ -16,7 +16,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.KLEIT.app"
     },
     "android": {
       "adaptiveIcon": {
@@ -25,11 +26,13 @@
       },
       "package": "com.ak_13.KLEIT"
     },
-
     "extra": {
       "eas": {
         "projectId": "31b593b2-baac-4fcf-bd16-940f22d47260"
       }
-    }
+    },
+    "plugins": [
+      "expo-font"
+    ]
   }
 }

@@ -5,8 +5,8 @@ import {
 import React from "react";
 import { Image, ImageBackground, Text, View } from "react-native";
 
-const bg = require("./assets/images/College_Photo.png");
-const kle = require("./assets/images/kleit_logo.png");
+const bg = require("../assets/images/College_Photo.png");
+const kle = require("../assets/images/kleit_logo.png");
 
 export default function CustomDrawer(props) {
   return (

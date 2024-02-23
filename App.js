@@ -1,6 +1,13 @@
+//firebase imports
+import "@react-native-firebase/app";
+import firebase from "@react-native-firebase/app";
+import "@react-native-firebase/auth";
+
+import { firebaseConfig } from "./firebaseConfig";
+
+//App imports
 import "react-native-gesture-handler";
 import React from "react";
-import { Image, Linking, TouchableOpacity } from "react-native";
 import { Provider as PaperProvider } from "react-native-paper";
 
 import * as SplashScreen from "expo-splash-screen";
@@ -13,28 +20,44 @@ import {
   Roboto_500Medium,
 } from "@expo-google-fonts/roboto";
 
+//Screens import
 import Academics from "./screens/Academics";
 import Admissions from "./screens/Admissions";
 import PaymentScreen from "./screens/payment-Screen";
+import FeePayment from "./screens/FeePayment";
 
+//Navigators import
 import UGStackNavigator from "./NavigationContainers/UGStack";
 import PGStackNavigator from "./NavigationContainers/PGStack";
 import DrawerStackNavigator from "./NavigationContainers/Drawer";
-import FeePayment from "./screens/FeePayment";
+import HeaderRight from "./components/headerRight";
 
+//Initialise the firebase
+console.log("before firebase");
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+  console.log("initialised")
+}
+
+//To initialise authentication
+// export const auth = firebase.auth();
+
+//App code begins
 const Stack = createNativeStackNavigator();
 
 const kle = require("./assets/images/kleit_logo.png");
 
+//Splashscreen timeout control code
 SplashScreen.preventAutoHideAsync();
 setTimeout(SplashScreen.hideAsync, 2000);
 
+//Common Properties to be used throughout the app
 const commonOptions = {
   headerStyle: {
     backgroundColor: "#735029",
   },
   headerTintColor: "#D4D4D4",
-  statusBarColor:"#735029"
+  statusBarColor: "#735029",
 };
 
 export default function App() {
@@ -54,72 +77,36 @@ export default function App() {
             name="Drawer"
             options={{
               headerShown: false,
-              statusBarColor:'#735029',
+              statusBarColor: "#735029",
             }}
             component={DrawerStackNavigator}
           />
+
           <Stack.Screen
             name="Academics"
             options={{
               ...commonOptions,
-              headerRight: () => (
-                <TouchableOpacity
-                  onPress={() => Linking.openURL("https://kleit.ac.in/")}
-                >
-                  <Image
-                    source={kle}
-                    style={{
-                      width: 50,
-                      height: 50,
-                      marginBottom: 4,
-                    }}
-                  />
-                </TouchableOpacity>
-              ),
+              headerRight: () => <HeaderRight />,
             }}
             component={Academics}
           />
+
           <Stack.Screen
             name="Admissions"
             options={{
               ...commonOptions,
-              statusBarColor:'#735029',
-              headerRight: () => (
-                <TouchableOpacity
-                  onPress={() => Linking.openURL("https://kleit.ac.in/")}
-                >
-                  <Image
-                    source={kle}
-                    style={{
-                      width: 50,
-                      height: 50,
-                      marginBottom: 4,
-                    }}
-                  />
-                </TouchableOpacity>
-              ),
+              statusBarColor: "#735029",
+              headerRight: () => <HeaderRight />,
             }}
             component={Admissions}
           />
+
           <Stack.Screen
             name="PaymentScreen"
             options={{
               title: "KLEIT Payment",
               ...commonOptions,
-              headerRight: () => (
-                <TouchableOpacity
-                  onPress={() => Linking.openURL("https://kleit.ac.in/")}
-                >
-                  <Image
-                    source={kle}
-                    style={{
-                      width: 50,
-                      height: 50,
-                      marginBottom: 4,
-                    }}
-                  />
-                </TouchableOpacity>
-              ),
+              headerRight: () => <HeaderRight />,
             }}
             component={PaymentScreen}
           />
@@ -128,20 +115,7 @@ export default function App() {
             options={{
               title: "UG Courses Offered",
               ...commonOptions,
-              headerRight: () => (
-                <TouchableOpacity
-                  onPress={() => Linking.openURL("https://kleit.ac.in/")}
-                >
-                  <Image
-                    source={kle}
-                    style={{
-                      width: 50,
-                      height: 50,
-                      marginBottom: 4,
-                    }}
-                  />
-                </TouchableOpacity>
-              ),
+              headerRight: () => <HeaderRight />,
             }}
             component={UGStackNavigator}
           />
@@ -150,20 +124,7 @@ export default function App() {
             options={{
               title: "PG Courses Offered",
               ...commonOptions,
-              headerRight: () => (
-                <TouchableOpacity
-                  onPress={() => Linking.openURL("https://kleit.ac.in/")}
-                >
-                  <Image
-                    source={kle}
-                    style={{
-                      width: 50,
-                      height: 50,
-                      marginBottom: 4,
-                    }}
-                  />
-                </TouchableOpacity>
-              ),
+              headerRight: () => <HeaderRight />,
             }}
             component={PGStackNavigator}
           />
@@ -172,20 +133,7 @@ export default function App() {
             options={{
               title: "Fee Structure",
               ...commonOptions,
-              headerRight: () => (
-                <TouchableOpacity
-                  onPress={() => Linking.openURL("https://kleit.ac.in/")}
-                >
-                  <Image
-                    source={kle}
-                    style={{
-                      width: 50,
-                      height: 50,
-                      marginBottom: 4,
-                    }}
-                  />
-                </TouchableOpacity>
-              ),
+              headerRight: () => <HeaderRight />,
             }}
             component={FeePayment}
           />
