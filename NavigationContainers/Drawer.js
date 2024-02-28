@@ -11,6 +11,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Login from "../screens/Login";
 import HeaderRight from "../components/headerRight";
+import SignupScreen from "../screens/Signup";
 
 const Drawer = createDrawerNavigator();
 
@@ -29,8 +30,8 @@ export default function DrawerStackNavigator() {
           headerTintColor: "#D4D4D4",
           drawerActiveTintColor: "#fff",
           drawerActiveBackgroundColor: "#735029",
-          drawerHideStatusBarOnOpen:true,
-          headerRight: () => <HeaderRight/>,
+          drawerHideStatusBarOnOpen: true,
+          headerRight: () => <HeaderRight />,
           drawerIcon: ({ color }) => (
             <Ionicons name="home-outline" size={24} color={color} />
           ),
@@ -44,9 +45,13 @@ export default function DrawerStackNavigator() {
           ...commonOptions,
           drawerActiveTintColor: "#fff",
           drawerActiveBackgroundColor: "#735029",
-          headerRight: () => <HeaderRight/>,
+          headerRight: () => <HeaderRight />,
           drawerIcon: ({ color }) => (
-            <Ionicons name="information-circle-outline" size={24} color={color} />
+            <Ionicons
+              name="information-circle-outline"
+              size={24}
+              color={color}
+            />
           ),
         }}
       />
@@ -58,7 +63,7 @@ export default function DrawerStackNavigator() {
           ...commonOptions,
           drawerActiveTintColor: "#fff",
           drawerActiveBackgroundColor: "#735029",
-          headerRight: () => <HeaderRight/>,
+          headerRight: () => <HeaderRight />,
           drawerIcon: ({ color }) => (
             <Ionicons name="call-outline" size={24} color={color} />
           ),
@@ -72,11 +77,16 @@ export default function DrawerStackNavigator() {
           ...commonOptions,
           drawerActiveTintColor: "#fff",
           drawerActiveBackgroundColor: "#735029",
-          headerRight: () => <HeaderRight/>,
+          headerRight: () => <HeaderRight />,
           drawerIcon: ({ color }) => (
             <Ionicons name="person-outline" size={24} color={color} />
           ),
         }}
+      />
+      <Drawer.Screen
+        name="Signup"
+        component={SignupScreen}
+        options={{ drawerItemStyle: { display: "none" } }}
       />
       <Drawer.Screen
         name="Payment Screen"
@@ -86,7 +96,7 @@ export default function DrawerStackNavigator() {
           ...commonOptions,
           drawerActiveTintColor: "#fff",
           drawerActiveBackgroundColor: "#735029",
-          headerRight: () => <HeaderRight/>,
+          headerRight: () => <HeaderRight />,
           drawerIcon: ({ color }) => (
             <Ionicons name="school-outline" size={24} color={color} />
           ),

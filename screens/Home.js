@@ -6,6 +6,7 @@ import {
   Text,
   TouchableOpacity,
   StatusBar,
+  Dimensions,
 } from "react-native";
 
 const bgimg = require("../assets/images/bgimg.png");
@@ -14,6 +15,7 @@ const btn2 = require("../assets/images/btn1.png");
 const btn3 = require("../assets/images/btn.png");
 
 export default function ({ navigation }) {
+  const window = Dimensions.get('window')
   return (
     <ImageBackground source={bgimg} style={styles.container} resizeMode="cover">
       <StatusBar
@@ -76,7 +78,7 @@ export default function ({ navigation }) {
           </View>
         </ImageBackground>
       </TouchableOpacity>
-      <View style={{ paddingBottom: "34%" }}>
+      <View style={{ paddingBottom: (window.height*15)/100 }}>
         <TouchableOpacity
           onPress={() => navigation.navigate("PaymentScreen")}
           style={styles.btn}

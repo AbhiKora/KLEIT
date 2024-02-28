@@ -1,4 +1,6 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp, getApp } from "firebase/app";
+import { initializeAuth, getAuth, getReactNativePersistence } from 'firebase/auth';
+import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 
 // Optionally import the services that you want to use
 // import {...} from "firebase/auth";
@@ -19,6 +21,15 @@ export const firebaseConfig = {
     measurementId: "G-5TQCKSV7EC"
   };
 
-// const app = initializeApp(firebaseConfig);
+
+  //initialise Firebase App
+  const app = initializeApp(firebaseConfig);
+  // initialize Firebase Auth for that app immediately
+  const auth = initializeAuth(app, {
+    persistence: getReactNativePersistence(ReactNativeAsyncStorage)
+  });
+  
+  export { app, auth, getApp, getAuth };
+
 // For more information on how to access Firebase in your project,
 // see the Firebase documentation: https://firebase.google.com/docs/web/setup#access-firebase

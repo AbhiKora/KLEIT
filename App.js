@@ -1,9 +1,12 @@
 //firebase imports
-import "@react-native-firebase/app";
-import firebase from "@react-native-firebase/app";
-import "@react-native-firebase/auth";
+// import "@react-native-firebase/app";
+// import firebase from "@react-native-firebase/app";
+// import "@react-native-firebase/auth";
 
-import { firebaseConfig } from "./firebaseConfig";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+
+import { firebaseConfig } from "./services/firebaseConfig";
 
 //App imports
 import "react-native-gesture-handler";
@@ -33,14 +36,14 @@ import DrawerStackNavigator from "./NavigationContainers/Drawer";
 import HeaderRight from "./components/headerRight";
 
 //Initialise the firebase
-console.log("before firebase");
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-  console.log("initialised")
-}
+// console.log("before firebase");
+// if (!firebase.apps.length) {
+//   firebase.initializeApp(firebaseConfig);
+//   console.log("initialised")
+// }
+const app = initializeApp(firebaseConfig);
 
-//To initialise authentication
-// export const auth = firebase.auth();
+const auth = getAuth(app);
 
 //App code begins
 const Stack = createNativeStackNavigator();

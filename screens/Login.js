@@ -1,59 +1,84 @@
-import React, { useEffect, useState } from "react";
-import { firebase } from '@react-native-firebase/auth';
+import React, { useState } from "react";
 import { Button, TextInput } from "react-native-paper";
-import { StyleSheet, Text, View } from "react-native";
-// import firebase from '@react-native-firebase/app';
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
-export default function Login() {
-  const [Email, onChangeEmail] = React.useState("");
-  const [Password, onChangePassword] = React.useState("");
-
-  // useEffect(() => {
-  //   getDatabase();
-  // }, []);
+export default function LoginScreen({navigation}) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
-    try {
-      if (firebase.apps.length === 0)
-      {
-        console.log("Firebase not initialised")
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in.
+        console.log("User is logged in");
+        Alert.alert("A user is already logged in.")
       }
-      const isUserCreated = await firebase.auth().createUserWithEmailAndPassword(Email, Password)
-      console.log(isUserCreated)
-    } catch (err) {
-      console.log(err);
-    }
+      else {
+        signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed up
+        const user = userCredential.user;
+        Alert.alert("Login Successful");
+        navigation.navigate("Home", {
+          email: userCredential.user.email,
+          uid: userCredential.user.uid,
+        });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // Alert.alert(errorCode);
+        console.log(errorCode);
+        Alert.alert(errorMessage);
+      });
+      }
+    });
   };
 
   return (
-    <View style = {styles.container}>
-      <Text style = {[{fontSize:26},{alignSelf:"center"},{paddingBottom:14}]}>Please Login</Text>
+    <View style={styles.container}>
+      <Text
+        style={[
+          { fontSize: 26 },
+          { alignSelf: "center" },
+          { paddingBottom: 14 },
+        ]}
+      >
+        Login with Existing Account
+      </Text>
       <TextInput
         label="Email"
-        value={Email}
-        onChangeText={(text) => onChangeEmail(text)}
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+        autoCapitalize="none"
         mode="outlined"
         style={styles.TextBox}
-        textColor='black'
+        textColor="black"
       />
       <TextInput
         label="Password"
-        value={Password}
-        onChangeText={(text) => onChangePassword(text)}
+        value={password}
+        onChangeText={setPassword}
         mode="outlined"
         style={styles.TextBox}
         autoCapitalize="none"
-        textColor='black'
+        textColor="black"
         secureTextEntry={true}
       />
-      <Button
-        mode="contained"
-        onPress={handleLogin}
-        style={{ marginHorizontal: 20 }}
-      >
-        Login
+      <Button mode="contained" onPress={handleLogin} style={styles.button}>
+        <Text style={{ color: "white" }}>Login</Text>
       </Button>
-      <Text></Text>
+      <TouchableOpacity
+        style={styles.Signup}
+        onPress={() => navigation.navigate("Signup")}
+      >
+        <Text style={[{ fontSize: 15 }, { color: "blue" }]}>
+          New User? Signup
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -65,8 +90,16 @@ const styles = StyleSheet.create({
   },
   TextBox: {
     marginTop: 5,
-    marginBottom: 30,
+    marginBottom: 25,
     marginHorizontal: 20,
-    backgroundColor:"white",
+    backgroundColor: "white",
+  },
+  button: {
+    marginHorizontal: 20,
+    backgroundColor: "#0066ff",
+  },
+  Signup: {
+    marginTop: 16,
+    alignItems: "center",
   },
 });
