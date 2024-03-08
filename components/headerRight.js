@@ -1,34 +1,41 @@
 import React from "react";
-import { TouchableOpacity, Image, Linking } from "react-native";
+import { TouchableOpacity, Image, Linking, Alert } from "react-native";
 import { Menu, Divider } from "react-native-paper";
 const kle = require("../assets/images/kleit_logo.png");
 
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { useNavigation } from "@react-navigation/native";
 
 const handleLogout = () => {
   const auth = getAuth();
-onAuthStateChanged(auth, (user) => {
+  const user = auth.currentUser;
+
   if (user) {
-    // user is logged in
+    // User is logged in
     signOut(auth)
-    .then(() => {
-      console.log("User signed out");           // Code might have issues here
-    })
-    .catch((error) => {
-      console.error("Error signing out: ", error);
-    });
+      .then(() => {
+        Alert.alert("User signed out");
+        console.log("User signed out");
+      })
+      .catch((error) => {
+        Alert.alert("Error signing out:", error);
+        console.error("Error signing out: ", error);
+      });
   } else {
-    // No user is signed in.
+    // No user is logged in
+    Alert.alert("No user is logged in");
     console.log("No user is logged in");
   }
-});
-}
+};
+
 
 const HeaderRight = () => {
   const [visible, setVisible] = React.useState(false);
 
   const openMenu = () => setVisible(true);
   const closeMenu = () => setVisible(false);
+
+  const navigation = useNavigation()
   return (
       <Menu
         visible={visible}
@@ -46,7 +53,7 @@ const HeaderRight = () => {
           </TouchableOpacity>
         }
       >
-        <Menu.Item onPress={() => {}} title="Profile" />
+        <Menu.Item onPress={() => navigation.navigate("Profile")} title="Profile" />
         <Divider />
         <Menu.Item
           onPress={() => Linking.openURL("https://kleit.ac.in/")}

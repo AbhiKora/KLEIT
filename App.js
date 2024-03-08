@@ -26,21 +26,19 @@ import {
 //Screens import
 import Academics from "./screens/Academics";
 import Admissions from "./screens/Admissions";
-import PaymentScreen from "./screens/payment-Screen";
 import FeePayment from "./screens/FeePayment";
+import StudentCorner from "./screens/StudentCorner";
 
 //Navigators import
 import UGStackNavigator from "./NavigationContainers/UGStack";
 import PGStackNavigator from "./NavigationContainers/PGStack";
 import DrawerStackNavigator from "./NavigationContainers/Drawer";
+
+//Component of right header button
 import HeaderRight from "./components/headerRight";
+import StudentStackNavigator from "./NavigationContainers/Student";
 
 //Initialise the firebase
-// console.log("before firebase");
-// if (!firebase.apps.length) {
-//   firebase.initializeApp(firebaseConfig);
-//   console.log("initialised")
-// }
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
@@ -105,13 +103,13 @@ export default function App() {
           />
 
           <Stack.Screen
-            name="PaymentScreen"
+            name="StudentCorner"
             options={{
-              title: "KLEIT Payment",
+              title: "Student Corner",
               ...commonOptions,
               headerRight: () => <HeaderRight />,
             }}
-            component={PaymentScreen}
+            component={StudentCorner}
           />
           <Stack.Screen
             name="UGStack"
@@ -130,6 +128,15 @@ export default function App() {
               headerRight: () => <HeaderRight />,
             }}
             component={PGStackNavigator}
+          />
+          <Stack.Screen
+            name="StudentStack"
+            options={{
+              title: "Student Corner",
+              ...commonOptions,
+              headerRight: () => <HeaderRight />,
+            }}
+            component={StudentStackNavigator}
           />
           <Stack.Screen
             name="FeePayment"

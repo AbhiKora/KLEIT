@@ -12,6 +12,8 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import Login from "../screens/Login";
 import HeaderRight from "../components/headerRight";
 import SignupScreen from "../screens/Signup";
+import ProfilePage from "../screens/Profile";
+import ProfileUpdatePage from "../screens/ProfileUpdate";
 
 const Drawer = createDrawerNavigator();
 
@@ -84,11 +86,6 @@ export default function DrawerStackNavigator() {
         }}
       />
       <Drawer.Screen
-        name="Signup"
-        component={SignupScreen}
-        options={{ drawerItemStyle: { display: "none" } }}
-      />
-      <Drawer.Screen
         name="Payment Screen"
         component={PaymentScreen}
         options={{
@@ -101,6 +98,24 @@ export default function DrawerStackNavigator() {
             <Ionicons name="school-outline" size={24} color={color} />
           ),
         }}
+      />
+
+      {/* Components to use elsewhere nested in Drawer Stack */}
+
+      <Drawer.Screen
+        name="Signup"
+        component={SignupScreen}
+        options={{ drawerItemStyle: { display: "none" } }}
+      />
+      <Drawer.Screen
+        name="Profile"
+        component={ProfilePage}
+        options={{ ...commonOptions, drawerItemStyle: { display: "none" } }}
+      />
+      <Drawer.Screen
+        name="ProfileUpdate"
+        component={ProfileUpdatePage}
+        options={{ ...commonOptions, drawerItemStyle: { display: "none" } }}
       />
     </Drawer.Navigator>
   );

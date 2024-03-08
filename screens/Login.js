@@ -1,84 +1,97 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, TextInput } from "react-native-paper";
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { saveAuthData } from '../services/authStorage';
 
-export default function LoginScreen({navigation}) {
+export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsLoggedIn(!!user); // Update login status based on user object
+    });
+
+    return () => unsubscribe(); // Clean up listener on component unmount
+  }, []);
 
   const handleLogin = async () => {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in.
-        console.log("User is logged in");
-        Alert.alert("A user is already logged in.")
-      }
-      else {
-        signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed up
-        const user = userCredential.user;
+    if (!isLoggedIn) {
+      const auth = getAuth();
+
+      try {
+        const userCredential = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        console.log("User logged in successfully!");
         Alert.alert("Login Successful");
-        navigation.navigate("Home", {
-          email: userCredential.user.email,
-          uid: userCredential.user.uid,
-        });
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // Alert.alert(errorCode);
-        console.log(errorCode);
-        Alert.alert(errorMessage);
-      });
+        await saveAuthData(userCredential.email, userCredential.uid);
+      } catch (error) {
+        console.error("Login error:", error);
+        Alert.alert("Login Error:", error.message);
       }
-    });
+    } else {
+      Alert.alert(
+        "Already Logged In",
+        "You are already logged in with another account."
+      );
+    }
   };
 
   return (
     <View style={styles.container}>
-      <Text
-        style={[
-          { fontSize: 26 },
-          { alignSelf: "center" },
-          { paddingBottom: 14 },
-        ]}
-      >
-        Login with Existing Account
-      </Text>
-      <TextInput
-        label="Email"
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
-        autoCapitalize="none"
-        mode="outlined"
-        style={styles.TextBox}
-        textColor="black"
-      />
-      <TextInput
-        label="Password"
-        value={password}
-        onChangeText={setPassword}
-        mode="outlined"
-        style={styles.TextBox}
-        autoCapitalize="none"
-        textColor="black"
-        secureTextEntry={true}
-      />
-      <Button mode="contained" onPress={handleLogin} style={styles.button}>
-        <Text style={{ color: "white" }}>Login</Text>
-      </Button>
-      <TouchableOpacity
-        style={styles.Signup}
-        onPress={() => navigation.navigate("Signup")}
-      >
-        <Text style={[{ fontSize: 15 }, { color: "blue" }]}>
-          New User? Signup
+      {isLoggedIn ? (
+        <>
+        <Text style={styles.alreadyLoggedInText}>
+          You are currently logged in.
         </Text>
-      </TouchableOpacity>
+        <Button mode="contained" onPress={() => navigation.navigate("Home")} style={styles.button}>
+            <Text style={{ color: "white" }}>Go to home</Text>
+          </Button>
+        </>
+      ) : (
+        <>
+          <Text style={[styles.title]}>Login with Existing Account</Text>
+          <TextInput
+            label="Email"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
+            mode="outlined"
+            style={styles.textBox}
+            textColor="black"
+          />
+          <TextInput
+            label="Password"
+            value={password}
+            onChangeText={setPassword}
+            mode="outlined"
+            style={styles.textBox}
+            autoCapitalize="none"
+            textColor="black"
+            secureTextEntry={true}
+          />
+          <Button mode="contained" onPress={handleLogin} style={styles.button}>
+            <Text style={{ color: "white" }}>Login</Text>
+          </Button>
+          <TouchableOpacity
+            style={styles.signup}
+            onPress={() => navigation.navigate("Signup")}
+          >
+            <Text style={styles.signupText}>New User? Signup</Text>
+          </TouchableOpacity>
+        </>
+      )}
     </View>
   );
 }
@@ -86,9 +99,14 @@ export default function LoginScreen({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "center"
   },
-  TextBox: {
+  title: {
+    fontSize: 26,
+    marginBottom: 14,
+    alignSelf: "center"
+  },
+  textBox: {
     marginTop: 5,
     marginBottom: 25,
     marginHorizontal: 20,
@@ -98,8 +116,17 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     backgroundColor: "#0066ff",
   },
-  Signup: {
+  signup: {
     marginTop: 16,
-    alignItems: "center",
+  },
+  signupText: {
+    fontSize: 15,
+    color: "blue",
+    alignSelf: "center"
+  },
+  alreadyLoggedInText: {
+    fontSize: 20,
+    marginBottom: 20,
+    alignSelf: "center"
   },
 });
