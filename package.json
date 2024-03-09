@@ -27,7 +27,7 @@
     "firebase": "^10.8.0",
     "react": "18.2.0",
     "react-native": "0.73.4",
-    "react-native-gesture-handler": "~2.14.0",
+    "react-native-gesture-handler": "~2.15.0",
     "react-native-mime-types": "^2.5.0",
     "react-native-paper": "^5.10.3",
     "react-native-pdf": "^6.7.1",
